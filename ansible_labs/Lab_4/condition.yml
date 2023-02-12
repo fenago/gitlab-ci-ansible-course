@@ -1,0 +1,13 @@
+---
+- name: Play to patch only Ubuntu systems
+  hosts: all
+  become: true
+
+  tasks: 
+  - name: Patch Ubuntu systems
+    apt:
+      name: apache2
+      state: latest
+    when: ansible_facts['distribution'] == "Ubuntu"
+
+
