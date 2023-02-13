@@ -1,103 +1,31 @@
-Quickstart for writing on GitHub
+Quickstart for writing on Gitlab
 ================================
 
 In this lab, we will cover following topics:
 
-- Creating or editing your profile README
-- Adding an image to suit your visitors
 - Adding a table
 - Adding a collapsed section
 - Adding a quote
 - Adding a comment
 - Saving your work
 
-Learn advanced formatting features by creating a README for your GitHub
-profile.
 
 
-Creating or editing your profile README
------------------------------------------------------------------------------------
 
-Your profile README lets you share information about yourself with the
-community on GitHub.com. The README is displayed at the top of your
-profile page.
+Creating or editing your README
+-----------------------------------------
 
-If you don\'t already have a profile README, you can add one.
-
-1.  Create a repository with the same name as your GitHub username,
+1.  Create a repository with the,
     initializing the repository with a `README.md` file.
     
-2.  Edit the `README.md` file and delete the template text (beginning
-    `### Hi there`) that is automatically added when you create the
-    file.
+2.  Edit the `README.md` file and delete the template text that is automatically 
+    added when you create the file.
 
-If you already have a profile README, you can edit it from your profile
-page.
+2.  Click `README.md` and then click `Edit` to start editing the file.
 
-1.  In the upper-right corner of any GitHub page, click your profile
-    photo, then click **Your profile**.
-
-2.  Click the next to your profile README.
-
-    ![Screenshot of a profile page, with the pencil icon highlighted
-    next to the profile
-    README](./images/edit-profile-readme.png)
-
-Adding an image to suit your visitors
--------------------------------------------------------------------------------
-
-You can include images in your communication on GitHub. Here, you\'ll
-add a responsive image, such as a banner, to the top of your profile
-README.
-
-By using the HTML `<picture>` element with the `prefers-color-scheme`
-media feature, you can add an image that changes depending on whether a
-visitor is using light or dark mode.
-
-1.  Copy and paste the following markup into your `README.md` file.
-
-    
-```
-<picture>
- <source media="(prefers-color-scheme: dark)" srcset="YOUR-DARKMODE-IMAGE">
- <source media="(prefers-color-scheme: light)" srcset="YOUR-LIGHTMODE-IMAGE">
- <img alt="YOUR-ALT-TEXT" src="YOUR-DEFAULT-IMAGE">
-</picture>
-```
-    
-
-2.  Replace the placeholders in the markup with the URLs of your chosen
-    images. Alternatively, to try the feature first, you can copy the
-    URLs from our example below.
-
-    -   Replace `YOUR-DARKMODE-IMAGE` with the URL of an image to
-        display for visitors using dark mode.
-    -   Replace `YOUR-LIGHTMODE-IMAGE` with the URL of an image to
-        display for visitors using light mode.
-    -   Replace `YOUR-DEFAULT-IMAGE` with the URL of an image to display
-        in case neither of the other images can be matched, for example
-        if the visitor is using a browser that does not support the
-        `prefers-color-scheme` feature.
-
-3.  To make the image accessible for visitors who are using a screen
-    reader, replace `YOUR-ALT-TEXT` with a description of the image.
-
-4.  To check the image has rendered correctly, click the **Preview**
-    tab.
+    ![](./images/1.png)
 
 
-### Example
-
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/25423296/163456776-7f95b81a-f1ed-45f7-b7ab-8fa810d529fa.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
-      <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
-    </picture>
-
-### How it looks
-
-![Screenshot of the Preview tab in light mode, with an image of a
-smiling sun displayed](./images/lightmode-image-example.png)
 
 Adding a table
 ------------------------------------------------------------
@@ -117,8 +45,9 @@ numbers, it\'s useful to right-align the column by using the syntax
 
         ## About me
 
-        Hi, I'm Mona. You might recognize me as GitHub's mascot.
+        Hi, I'm Mona.
 
+    
 3.  Two lines below this paragraph, insert a table by copying and
     pasting the following markup.
 
@@ -143,7 +72,7 @@ numbers, it\'s useful to right-align the column by using the syntax
 
     ## About me
 
-    Hi, I'm Mona. You might recognize me as GitHub's mascot.
+    Hi, I'm Mona.
 
     | Rank | Languages |
     |-----:|-----------|

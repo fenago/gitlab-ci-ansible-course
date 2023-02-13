@@ -2,7 +2,7 @@ Basic writing and formatting syntax
 ===================================
 
 
-Create sophisticated formatting for your prose and code on GitHub with
+Create sophisticated formatting for your prose and code on Gitlab with
 simple syntax.
 
 
@@ -71,7 +71,7 @@ backticks.
 ![Rendered code block](./images/code-block-rendered.png)
 
 If you are frequently editing code snippets and tables, you may benefit
-from enabling a fixed-width font in all comment fields on GitHub.
+from enabling a fixed-width font in all comment fields on Gitlab.
 
 Supported color models
 ----------------------------------------------------
@@ -124,7 +124,7 @@ To order your list, precede each line with a number.
 You can create a nested list by indenting one or more list items below
 another item.
 
-To create a nested list using the web editor on GitHub or a text editor
+To create a nested list using the web editor on Gitlab or a text editor
 that uses a monospaced font, like `Visual Studio Code`, you can align your list visually.
 Type space characters in front of your nested list item, until the list
 marker character ([-] or [\*]) lies directly below the first
@@ -146,7 +146,7 @@ highlighted](./images/nested-list-alignment.png)
 ![List with two levels of nested
 items](./images/nested-list-example-1.png)
 
-To create a nested list in the comment editor on GitHub, which doesn\'t
+To create a nested list in the comment editor on Gitlab, which doesn\'t
 use a monospaced font, you can look at the list item immediately above
 the nested list and count the number of characters that appear before
 the content of the item. Then type that number of space characters in
@@ -175,8 +175,6 @@ would need to indent the second nested list item by seven spaces.
 ![List with two levels of nested
 items](./images/nested-list-example-2.png)
 
-For more examples, see the [GitHub Flavored Markdown
-Spec](https://github.github.com/gfm/#example-265).
 
 Task lists
 -------------------------------------------------------
@@ -192,7 +190,7 @@ Using emoji
 
 You can add emoji to your writing by typing `:EMOJICODE:`.
 
-`:+1: This PR looks great - it's ready to merge! :shipit:`
+`:+1: This PR looks great - it's ready to merge!`
 
 ![Rendered emoji](./images/emoji-rendered.png)
 
@@ -240,7 +238,7 @@ Footnotes are not supported in wikis.
 Hiding content with comments
 ----------------------------------------------------------------
 
-You can tell GitHub to hide content from the rendered Markdown by
+You can tell Gitlab to hide content from the rendered Markdown by
 placing the content in an HTML comment.
 
     <!-- This content will not appear in the rendered Markdown -->
@@ -248,7 +246,7 @@ placing the content in an HTML comment.
 Ignoring Markdown formatting
 ----------------------------------------------------------------
 
-You can tell GitHub to ignore (or escape) Markdown formatting by using
+You can tell Gitlab to ignore (or escape) Markdown formatting by using
 [\\] before the Markdown character.
 
 `Let's rename \*our-new-project\* to \*our-old-project\*.`
