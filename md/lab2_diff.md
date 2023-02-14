@@ -11,7 +11,7 @@ Before we start, let's make a change to `mars.txt`, adding yet another line.
 
 
 ``` 
-$ cd ~/work/planets
+$ cd ~/Desktop/planets
 $ nano mars.txt
 $ cat mars.txt
 ```

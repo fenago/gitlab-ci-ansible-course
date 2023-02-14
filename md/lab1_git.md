@@ -9,7 +9,7 @@ working directory to the newly created one:
 
 
 ``` 
-$ cd ~/work
+$ cd ~/Desktop
 $ mkdir planets
 $ cd planets
 ```
@@ -117,7 +117,7 @@ First let's make sure we're still in the right directory. You should be in the `
 
 
 ``` 
-$ cd ~/work/planets
+$ cd ~/Desktop/planets
 ```
 
 
