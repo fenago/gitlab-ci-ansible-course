@@ -14,7 +14,11 @@ Note that `root` user password is **fenago**
 
 All lab file are present at below path. Run following command in the terminal first before running commands in the lab:
 
-`cd ~/Desktop/gitlab-ci-ansible-course` 
+```
+cd ~/Desktop/gitlab-ci-ansible-course
+mkdir Lab_13
+cd Lab_13
+```
 
 <span style="color:red;">Make sure that your lab environment's `/etc/hosts` file has all host entries present in `hosts.txt` file which is located at the root folder.</span>
 
@@ -115,7 +119,9 @@ frt01.example.com
 frt02.example.com
 ```
 
+**Note:** Create file name `hosts` in `Lab_13` directory and add above content before running following commands
 
+![](./images/22.png)
 
 Following are three simple examples that demonstrate ad hoc
 commands---they are also valuable for verifying both the installation of
@@ -324,19 +330,6 @@ ap1.example.com | SUCCESS => {
 }
 ```
 
-
-
-Of course, the Ansible source tree is constantly changing and it is
-unlikely you would just want to stick with the copy you cloned. When the
-time comes to update it, you don\'t need to clone a new copy; you can
-simply update your existing working copy using the following commands
-(again, assuming that you initially cloned the source tree into your
-home directory):
-
-```
-$ git pull --rebase
-$ git submodule update --init --recursive
-```
 
 That concludes our introduction to setting up both your Ansible control
 machine and managed nodes. It is hoped that the knowledge you have

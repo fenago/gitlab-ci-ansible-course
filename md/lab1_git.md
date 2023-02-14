@@ -2,6 +2,13 @@ Lab: Git Source Control Management
 ----------------------------------
 
 
+#### Lab Environment
+
+You can open md lab guides in vscode as shown below. Lab guide pdfs have been uploaded as well in the course repository.
+
+![](./images/20.png)
+
+
 **Creating a Repository**
 
 Let's create a new directory in the `work` folder for our work and then change the current
@@ -263,6 +270,15 @@ $ git commit -m "Start notes on Mars as a base"
  1 file changed, 1 insertion(+)
  create mode 100644 mars.txt
 ```
+
+**Note:** If git username and email is not set, you will be asked to setup those first. After setting them up, run the above command again.
+
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
+
+![](./images/21.png)
 
 
 If we run `git status` now:
