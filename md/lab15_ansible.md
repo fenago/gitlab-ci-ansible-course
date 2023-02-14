@@ -1,8 +1,6 @@
 
-<img align="right" src="./images/logo.png">
 
-
-Lab 3. Defining Your Inventory
+Lab 15. Defining Your Inventory
 ================================
 
 
@@ -15,7 +13,7 @@ In this lab, we will cover the following topics:
 
 All lab file are present at below path. Run following command in the terminal first before running commands in the lab:
 
-`cd ~/Desktop/ansible-course/Lab_3` 
+`cd ~/Desktop/gitlab-ci-ansible-course/Lab_15` 
 
 
 Creating an inventory file and adding hosts
@@ -29,7 +27,7 @@ flag to specify the location of the inventory file if not using the
 default. Hypothetically, this might look like the following example:
 
 ```
-$ ansible -i /root/Desktop/ansible-course/Lab_3/my_inventory all -m ping
+$ ansible -i /root/Desktop/gitlab-ci-ansible-course/Lab_15/my_inventory all -m ping
 ```
 
 
@@ -76,10 +74,10 @@ ungrouped:
 
 
 
-**Note:** You can copy file from lab_3 folder as well.
+**Note:** You can copy file from Lab_15 folder as well.
 
 ```
-cd ~/Desktop/ansible-course/Lab_3 && cp my_inventory.yaml /etc/ansible/
+cd ~/Desktop/gitlab-ci-ansible-course/Lab_15 && cp my_inventory.yaml /etc/ansible/
 ```
 
 Now if you were to run the preceding inventory within Ansible, using a
@@ -208,10 +206,10 @@ all:
 ```
 
 
-**Note:** You can copy inventory file from lab_3 folder as well.
+**Note:** You can copy inventory file from Lab_15 folder as well.
 
 ```
-cd ~/Desktop/ansible-course/Lab_3 && cp hostgroups-yml /etc/ansible/my_inventory.yaml
+cd ~/Desktop/gitlab-ci-ansible-course/Lab_15 && cp hostgroups-yml /etc/ansible/my_inventory.yaml
 ```
 
 When you want to work with any of the groups from the preceding
@@ -523,7 +521,7 @@ $  tree
     happens:
 
 ```
-$ cd /root/Desktop/ansible-course/Lab_3/vartree
+$ cd /root/Desktop/gitlab-ci-ansible-course/Lab_15/vartree
 $ ansible -i inventory frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
 
 frt02.example.com | SUCCESS => {
@@ -621,7 +619,7 @@ Now, let\'s run an ad hoc command to see what value of [testvar]
 is actually set:
 
 ```
-$ cd /root/Desktop/ansible-course/Lab_3
+$ cd /root/Desktop/gitlab-ci-ansible-course/Lab_15
 $ ansible -i hostgroups-children-vars-ini ubuntu -m debug -a "var=testvar"
 
 frt01.example.com | SUCCESS => {

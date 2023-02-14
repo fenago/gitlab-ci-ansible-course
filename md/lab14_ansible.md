@@ -1,10 +1,5 @@
-
-<img align="right" src="./images/logo.png">
-
-
-
-Lab 2. Understanding the Fundamentals of Ansible
-=========================================
+Lab 14. Understanding the Fundamentals of Ansible
+=================================================
 
 
 
@@ -23,7 +18,7 @@ Note that `root` user password is **fenago**
 
 All lab file are present at below path. Run following command in the terminal first before running commands in the lab:
 
-`cd ~/Desktop/ansible-course/Lab_2` 
+`cd ~/Desktop/gitlab-ci-ansible-course/Lab_14` 
 
 
 Getting familiar with the Ansible framework
@@ -307,7 +302,7 @@ look something as follows:
 
 
 ```
-$ cd ~/Desktop/ansible-course/Lab_2
+$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_14
 $ ansible-playbook update-apache-version.yml
 
 

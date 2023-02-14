@@ -1,13 +1,10 @@
 
-<img align="right" src="./images/logo.png">
+
+Lab 16. Playbooks and Roles
+===========================
 
 
-
-Lab 4. Playbooks and Roles
-===================
-
-
-Specifically, in this lab, we will cover the following topics:
+In this lab, we will cover the following topics:
 
 -   Understanding the playbook framework
 -   Understanding roles---the playbook organizer
@@ -22,7 +19,7 @@ Specifically, in this lab, we will cover the following topics:
 
 All lab file are present at below path. Run following command in the terminal first before running commands in the lab:
 
-`cd ~/Desktop/ansible-course/Lab_4` 
+`cd ~/Desktop/gitlab-ci-ansible-course/Lab_16` 
 
 
 Understanding the playbook framework
@@ -176,7 +173,7 @@ Let's change the default Apache port using template as port 80 is already in use
 You can install apache2 by running `apt-get install -y apache2`. It can also installed by running following playbook:
 
 ```
-$ cd ~/Desktop/ansible-course/Lab_2
+$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_14
 $ ansible-playbook update-apache-version.yml
 ```
 
@@ -678,7 +675,7 @@ using [ansible-playbook] in the normal way---you should see output
 similar to this:
 
 ```
-$ cd ~/Desktop/ansible-course/Lab_4/role-example1
+$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_16/role-example1
 $ ansible-playbook -i hosts site.yml
 
 PLAY [Install Apache using a role] *********************************************
@@ -748,7 +745,7 @@ Roles based variables can go in one of two locations:
 
 **Note:** Complete example is available at:
 
-`cd ~/Desktop/ansible-course/Lab_4/role-example2` 
+`cd ~/Desktop/gitlab-ci-ansible-course/Lab_16/role-example2` 
 
 
 We shall see examples of both of these as we build our example:
@@ -1156,7 +1153,7 @@ mine are), you should see output similar to the following:
 
 ```
 
-$ cd ~/Desktop/ansible-course/Lab_4
+$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_16
 $ ansible-playbook -i hosts condition.yml
 
 PLAY [Play to patch only CentOS systems] ***************************************
@@ -1618,9 +1615,9 @@ TASK [Gathering Facts] *********************************************************
 ok: [localhost]
 
 TASK [Outer loop] **************************************************************
-included: /root/Desktop/ansible-course/Lab_4/loopsubtask.yml for localhost
-included: /root/Desktop/ansible-course/Lab_4/loopsubtask.yml for localhost
-included: /root/Desktop/ansible-course/Lab_4/loopsubtask.yml for localhost
+included: /root/Desktop/gitlab-ci-ansible-course/Lab_16/loopsubtask.yml for localhost
+included: /root/Desktop/gitlab-ci-ansible-course/Lab_16/loopsubtask.yml for localhost
+included: /root/Desktop/gitlab-ci-ansible-course/Lab_16/loopsubtask.yml for localhost
 
 TASK [Inner loop] **************************************************************
 ok: [localhost] => (item=100) => {
@@ -1929,7 +1926,7 @@ $ ansible-playbook -i hosts debug.yml
 PLAY [Play to demonstrate the debug strategy] **********************************
 
 TASK [Generate an error by referencing an undefined variable] ******************
-fatal: [frt01.example.com]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'mobile' is undefined\n\nThe error appears to be in '/root/Desktop/ansible-course/Lab_4/debug.yml': line 11, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n tasks:\n - name: Generate an error by referencing an undefined variable\n ^ here\n"}
+fatal: [frt01.example.com]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'mobile' is undefined\n\nThe error appears to be in '/root/Desktop/gitlab-ci-ansible-course/Lab_16/debug.yml': line 11, column 7, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n tasks:\n - name: Generate an error by referencing an undefined variable\n ^ here\n"}
 [frt01.example.com] TASK: Generate an error by referencing an undefined variable (debug)>
 
 
