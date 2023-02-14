@@ -1,9 +1,0 @@
-[app]
-app01.dev.example.com
-app02.dev.example.com
-
-[centos:children]
-app
-
-[newcentos:children]
-app
