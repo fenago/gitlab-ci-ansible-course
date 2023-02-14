@@ -31,7 +31,7 @@ ensure you have the latest Ansible version installed on the control
 host. Use the following command to confirm the latest Ansible version:
 
 ```
-$ ansible --version
+ansible --version
 ansible 2.9.6
  config file = /etc/ansible/ansible.cfg
  configured module search path = [u'/home/jamesf_local/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
@@ -47,7 +47,7 @@ Ansible will make use of SSH during all remote Linux-based automation
 tasks:
 
 ```
-$ ssh root@frontend.example.com
+ssh root@frontend.example.com
 The authenticity of host 'frontend.example.com (192.168.1.52)' can't be established.
 ED25519 key fingerprint is SHA256:hU+saFERGFDERW453tasdFPAkpVws.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -83,7 +83,7 @@ able to successfully ping each host. See the following output as an
 example:
 
 ```
-$ ping frontend.example.com
+ping frontend.example.com
 
 PING frontend.example.com (127.0.0.1) 56(84) bytes of data.
 64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.022 ms
@@ -103,7 +103,7 @@ PING frontend.example.com (127.0.0.1) 56(84) bytes of data.
     SSH key pair, you can generate one using the following command:
 
 ```
-$ ssh-keygen 
+ssh-keygen 
 ```
 
 When you run the [ssh-keygen] tool, you will see an output similar
@@ -113,7 +113,7 @@ need to enter a passphrase every time you want to run an Ansible task,
 which removes the convenience of authenticating with SSH keys:
 
 ```
-$ ssh-keygen 
+ssh-keygen 
 
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/doh/.ssh/id_rsa): <Enter>
@@ -147,8 +147,8 @@ The key's randomart image is:
     open):
 
 ```
-$ ssh-agent bash
-$ ssh-add ~/.ssh/id_rsa
+ssh-agent bash
+ssh-add ~/.ssh/id_rsa
 ```
 
 Before you can perform key-based authentication with your target hosts,
@@ -157,7 +157,7 @@ each host. You can copy the key to each host, in turn, using the
 following command:
 
 ```
-$  ssh-copy-id -i ~/.ssh/id_rsa.pub frontend.example.com
+ ssh-copy-id -i ~/.ssh/id_rsa.pub frontend.example.com
 
 /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "~/.ssh/id_rsa.pub"
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
@@ -178,7 +178,7 @@ your SSH key pair. So, you should see an output similar to the
 following:
 
 ```
-$ ansible all -i hosts -m ping
+ansible all -i hosts -m ping
 frontend.example.com | SUCCESS => {
     "changed": false, 
     "ping": "pong"
@@ -302,11 +302,11 @@ look something as follows:
 
 
 ```
-$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_14
-$ ansible-playbook update-apache-version.yml
+cd ~/Desktop/gitlab-ci-ansible-course/Lab_14
+ansible-playbook update-apache-version.yml
 
 
-$ PLAY [My first Ansible playbook] ***********************************************
+PLAY [My first Ansible playbook] ***********************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [remote2.example.com]
@@ -662,7 +662,7 @@ playbooks:
     output similar to the following:
 
 ```
-$ ansible-playbook -i production-inventory frontends-na.yml
+ansible-playbook -i production-inventory frontends-na.yml
 
 PLAY [frontends_na_zone] *******************************************************
 
@@ -704,7 +704,7 @@ Once you have done this, you should be able to run the playbook and you
 will see an output similar to the following:
 
 ```
-$ ansible-playbook -i production-inventory appservers-emea.yml
+ansible-playbook -i production-inventory appservers-emea.yml
 
 PLAY [appservers_emea_zone] ****************************************************
 
@@ -750,7 +750,7 @@ Ansible supports splitting up your code into manageable chunks without
 needing to run each chunk manually:
 
 ```
-$ ansible-playbook -i production-inventory site.yml
+ansible-playbook -i production-inventory site.yml
 
 PLAY [frontends_na_zone] *******************************************************
 
@@ -831,7 +831,7 @@ Ansible installed and working by issuing a command such as the following
 writing, installed on macOS with Homebrew):
 
 ```
-$ ansible 2.9.6
+ansible 2.9.6
   config file = None
   configured module search path = ['/Users/james/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/local/Cellar/ansible/2.9.6_1/libexec/lib/python3.8/site-packages/ansible
@@ -855,7 +855,7 @@ provided with Ansible:
     the output: 
 
 ```
-$ ansible-config list
+ansible-config list
 ```
 
 The following is an example of the kind of output you will see. There
@@ -863,7 +863,7 @@ are, of course, many pages to it, but a snippet is shown here as an
 example: 
 
 ```
-$ ansible-config list
+ansible-config list
 ACTION_WARNINGS:
   default: true
   description:
@@ -902,7 +902,7 @@ AGNOSTIC_BECOME_PROMPT:
     locations), you can run the following command:
 
 ```
-$ ansible-config dump
+ansible-config dump
 ```
 
 The output shows all the configuration parameters (in an environment
@@ -911,7 +911,7 @@ configured with its default value, you are told so (see the
 [(default)] element after each parameter name):
 
 ```
-$ ansible-config dump
+ansible-config dump
 ACTION_WARNINGS(default) = True
 AGNOSTIC_BECOME_PROMPT(default) = True
 ALLOW_WORLD_READABLE_TMPFILES(default) = False
@@ -935,7 +935,7 @@ ANSIBLE_SSH_CONTROL_PATH_DIR(default) = ~/.ansible/cp
     [bash] shell, but may differ for other shells):
 
 ```
-$ export ANSIBLE_FORCE_COLOR=True
+export ANSIBLE_FORCE_COLOR=True
 ```
 
 Now, let\'s re-run the [ansible-config] command, but this time get
@@ -943,7 +943,7 @@ it to tell us only the parameters that have been changed from their
 default values:
 
 ```
-$ ansible-config dump --only-change
+ansible-config dump --only-change
 ANSIBLE_FORCE_COLOR(env: ANSIBLE_FORCE_COLOR) = True
 ```
 
@@ -1002,7 +1002,7 @@ arguments, the [\--version] switch, which we use to confirm that
 Ansible is installed (and which version is installed):
 
 ```
-$ ansible 2.9.6
+ansible 2.9.6
   config file = None
   configured module search path = ['/Users/james/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/local/Cellar/ansible/2.9.6_1/libexec/lib/python3.8/site-packages/ansible
@@ -1020,7 +1020,7 @@ Let\'s try this out now:
     [ansible] command line. Use the following command:
 
 ```
-$ ansible --help
+ansible --help
 ```
 
 
@@ -1033,7 +1033,7 @@ $ ansible --help
     used earlier in this lab:
 
 ```
-$ ansible -i production-inventory --list-host appservers_emea_zone
+ansible -i production-inventory --list-host appservers_emea_zone
 ```
 
 When you run this, you should see the members of the
@@ -1043,7 +1043,7 @@ working with dynamic inventory files and you can no longer just
 [cat] your inventory file to the terminal to view the contents:
 
 ```
-$ ansible -i production-inventory --list-host appservers_emea_zone
+ansible -i production-inventory --list-host appservers_emea_zone
   hosts (2):
     appserver1-emea.example.com
     appserver2-emea.example.com
@@ -1060,7 +1060,7 @@ arguments for [ansible-playbook] to specify the private SSH key
 file, instead, as follows:
 
 ```
-$ ansible-playbook -i production-inventory site.yml --private-key ~/keys/id_rsa
+ansible-playbook -i production-inventory site.yml --private-key ~/keys/id_rsa
 ```
 
 Similarly, in the preceding section, we specified the
@@ -1071,7 +1071,7 @@ in the playbook, we could remove it altogether and instead have run it
 using the following command-line string:
 
 ```
-$ ansible-playbook -i production-inventory site.yml --user root
+ansible-playbook -i production-inventory site.yml --user root
 ```
 
 
@@ -1123,7 +1123,7 @@ command:
 
 
 ```
-$ ansible -i production-inventory frontends_emea_zone -a /usr/bin/date
+ansible -i production-inventory frontends_emea_zone -a /usr/bin/date
 ```
 
 You will see that Ansible faithfully logs in to each machine in turn and
@@ -1132,7 +1132,7 @@ output will look something as follows:
 
 
 ```
-$ ansible -i production-inventory frontends_emea_zone -a /usr/bin/date
+ansible -i production-inventory frontends_emea_zone -a /usr/bin/date
 frontend1-emea.example.com | CHANGED | rc=0 >>
 Sun 5 Apr 18:55:30 BST 2020
 frontend2-emea.example.com | CHANGED | rc=0 >>
@@ -1145,7 +1145,7 @@ Sun 5 Apr 18:55:30 BST 2020
 
 
 ```
-$ ansible -i production-inventory frontends_emea_zone -a /usr/sbin/pvs -u fenago
+ansible -i production-inventory frontends_emea_zone -a /usr/sbin/pvs -u fenago
 
 frontend2-emea.example.com | FAILED | rc=5 >>
   WARNING: Running as a non-root user. Functionality may be unavailable.
@@ -1169,7 +1169,7 @@ frontend1-emea.example.com | FAILED | rc=5 >>
 
 
 ```
-$ ansible -i production-inventory frontends_emea_zone -a /usr/sbin/pvs -u fenago --become
+ansible -i production-inventory frontends_emea_zone -a /usr/sbin/pvs -u fenago --become
 
 frontend2-emea.example.com | FAILED | rc=-1 >>
 Missing sudo password
@@ -1185,7 +1185,7 @@ Missing sudo password
     [/etc/sudoers] file:
 
 ```
-$ ansible -i production-inventory frontends_emea_zone -a /usr/sbin/pvs -u fenago --become --ask-become-pass
+ansible -i production-inventory frontends_emea_zone -a /usr/sbin/pvs -u fenago --become --ask-become-pass
 BECOME password:
 
 frontend1-emea.example.com | CHANGED | rc=0 >>
@@ -1206,7 +1206,7 @@ frontend2-emea.example.com | CHANGED | rc=0 >>
 
 
 ```
-$ ansible -i production-inventory frontends_emea_zone -m copy -a "src=/etc/hosts dest=/root/Desktop/hosts"
+ansible -i production-inventory frontends_emea_zone -m copy -a "src=/etc/hosts dest=/root/Desktop/hosts"
 
 frontend1-emea.example.com | CHANGED => {
     "ansible_facts": {
@@ -1265,7 +1265,7 @@ polling ([-P]), use this command:
 
 
 ```
-$ ansible -i production-inventory frontends_emea_zone -B 7200 -P 0 -a "sleep 2h"
+ansible -i production-inventory frontends_emea_zone -B 7200 -P 0 -a "sleep 2h"
 frontend1-emea.example.com | CHANGED => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -1295,7 +1295,7 @@ command from your Ansible control machine:
 
 
 ```
-$ ansible -i production-inventory frontend2-emea.example.com -m async_status -a "jid=651461662130.8858"
+ansible -i production-inventory frontend2-emea.example.com -m async_status -a "jid=651461662130.8858"
 frontend2-emea.example.com | SUCCESS => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -1312,7 +1312,7 @@ kill the [sleep] command that we issued and check on the status
 again, we can see the following:
 
 ```
-$ ansible -i production-inventory frontend2-emea.example.com -m async_status -a "jid=651461662130.8858"
+ansible -i production-inventory frontend2-emea.example.com -m async_status -a "jid=651461662130.8858"
 frontend2-emea.example.com | FAILED! => {
     "ansible_facts": {
         "discovered_interpreter_python": "/usr/bin/python"
@@ -1483,7 +1483,7 @@ playbook on a local machine, you should see an output that looks as
 follows:
 
 ```
-$ ansible-playbook -i localhost, redis-playbook.yml
+ansible-playbook -i localhost, redis-playbook.yml
 
 PLAY [Display redis variables] *************************************************
 
@@ -1567,7 +1567,7 @@ valid Ansible list. If we run the playbook, we should see Ansible\'s
 representation of the data structure from within our original file:
 
 ```
-$ ansible-playbook -i localhost, jinja2-filtering1.yml
+ansible-playbook -i localhost, jinja2-filtering1.yml
 
 PLAY [Jinja2 filtering demo 1] *************************************************
 
@@ -1629,7 +1629,7 @@ Now, if we run this, we can see that our data is converted into a nice
 neat set of [key: value] pairs:
 
 ```
-$ ansible-playbook -i localhost, jinja2-filtering2.yml
+ansible-playbook -i localhost, jinja2-filtering2.yml
 
 
 [WARNING]: Found variable using reserved name: tags
@@ -1683,7 +1683,7 @@ the [/etc/hosts] file for us, without us needing to resort to the
 
 
 ```
-$ ansible-playbook -i localhost, jinja2-filtering3.yml
+ansible-playbook -i localhost, jinja2-filtering3.yml
 
 PLAY [Jinja2 filtering demo 3] *************************************************
 

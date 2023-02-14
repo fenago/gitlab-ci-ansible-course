@@ -16,9 +16,9 @@ working directory to the newly created one:
 
 
 ``` 
-$ cd ~/Desktop
-$ mkdir planets
-$ cd planets
+cd ~/Desktop
+mkdir planets
+cd planets
 ```
 
 
@@ -28,7 +28,7 @@ Then we tell Git to make `planets` a [repository]-- a place where Git can store 
 
 
 ``` 
-$ git init
+git init
 ```
 
 
@@ -46,7 +46,7 @@ directory's contents, it appears that nothing has changed:
 
 
 ``` 
-$ ls
+ls
 ```
 
 
@@ -59,7 +59,7 @@ within `planets` called
 
 
 ``` 
-$ ls -a
+ls -a
 ```
 
 
@@ -84,7 +84,7 @@ default branch depending on your settings and version of git.
 
 
 ``` 
-$ git checkout -b main
+git checkout -b main
 ```
 
 
@@ -103,7 +103,7 @@ us the status of our project:
 
 
 ``` 
-$ git status
+git status
 ```
 
 
@@ -124,7 +124,7 @@ First let's make sure we're still in the right directory. You should be in the `
 
 
 ``` 
-$ cd ~/Desktop/planets
+cd ~/Desktop/planets
 ```
 
 
@@ -134,7 +134,7 @@ suitability as a base. We'll use `nano` to edit the file.
 
 
 ``` 
-$ nano mars.txt
+nano mars.txt
 ```
 
 
@@ -155,7 +155,7 @@ list command (`ls`):
 
 
 ``` 
-$ ls
+ls
 ```
 
 
@@ -174,7 +174,7 @@ line, which we can see by running:
 
 
 ``` 
-$ cat mars.txt
+cat mars.txt
 ```
 
 
@@ -193,7 +193,7 @@ noticed the new file:
 
 
 ``` 
-$ git status
+git status
 ```
 
 
@@ -222,7 +222,7 @@ that Git isn't keeping track of. We can tell Git to track a file using
 
 
 ``` 
-$ git add mars.txt
+git add mars.txt
 ```
 
 
@@ -232,7 +232,7 @@ and then check that the right thing happened:
 
 
 ``` 
-$ git status
+git status
 ```
 
 
@@ -260,7 +260,7 @@ run one more command:
 
 
 ``` 
-$ git commit -m "Start notes on Mars as a base"
+git commit -m "Start notes on Mars as a base"
 ```
 
 
@@ -286,7 +286,7 @@ If we run `git status` now:
 
 
 ``` 
-$ git status
+git status
 ```
 
 
@@ -307,7 +307,7 @@ recently, we can ask Git to show us the project's history using
 
 
 ``` 
-$ git log
+git log
 ```
 
 
@@ -352,8 +352,8 @@ contents; you may use a different editor, and don't need to
 
 
 ``` 
-$ nano mars.txt
-$ cat mars.txt
+nano mars.txt
+cat mars.txt
 ```
 
 
@@ -373,7 +373,7 @@ tells us that a file it already knows about has been modified:
 
 
 ``` 
-$ git status
+git status
 ```
 
 
@@ -404,7 +404,7 @@ state of the file and the most recently saved version:
 
 
 ``` 
-$ git diff
+git diff
 ```
 
 
@@ -447,7 +447,7 @@ After reviewing our change, it's time to commit it:
 
 
 ``` 
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+git commit -m "Add concerns about effects of Mars' moons on Wolfman"
 ```
 
 
@@ -473,8 +473,8 @@ Whoops: Git won't commit because we didn't use
 
 
 ``` 
-$ git add mars.txt
-$ git commit -m "Add concerns about effects of Mars' moons on Wolfman"
+git add mars.txt
+git commit -m "Add concerns about effects of Mars' moons on Wolfman"
 ```
 
 
@@ -498,8 +498,8 @@ file:
 
 
 ``` 
-$ nano mars.txt
-$ cat mars.txt
+nano mars.txt
+cat mars.txt
 ```
 
 
@@ -517,7 +517,7 @@ But the Mummy will appreciate the lack of humidity
 
 
 ``` 
-$ git diff
+git diff
 ```
 
 
@@ -545,8 +545,8 @@ let's put that change in the staging area and see what
 
 
 ``` 
-$ git add mars.txt
-$ git diff
+git add mars.txt
+git diff
 ```
 
 
@@ -558,7 +558,7 @@ the directory. However, if we do this:
 
 
 ``` 
-$ git diff --staged
+git diff --staged
 ```
 
 
@@ -584,7 +584,7 @@ in the staging area. Let's save our changes:
 
 
 ``` 
-$ git commit -m "Discuss concerns about Mars' climate for Mummy"
+git commit -m "Discuss concerns about Mars' climate for Mummy"
 ```
 
 
@@ -603,7 +603,7 @@ check our status:
 
 
 ``` 
-$ git status
+git status
 ```
 
 
@@ -622,7 +622,7 @@ and look at the history of what we've done so far:
 
 
 ``` 
-$ git log
+git log
 ```
 
 
@@ -659,7 +659,7 @@ options such as `--since` and `--until`, or
 command gets the list of commits made in the last two weeks:
 
 ```
-$ git log --since=2.weeks
+git log --since=2.weeks
 ```
 
 #### Commit parents
@@ -675,14 +675,14 @@ Compare (this example uses the very nice `--graph` option that
 makes an ASCII-art diagram of the history) the following code\...
 
 ```
-$ git log -5 --graph --oneline
+git log -5 --graph --oneline
 ```
 
 with this:
 
 
 ```
-$ git log -5 --graph --oneline --first-parent
+git log -5 --graph --oneline --first-parent
 ```
 
 Let\'s say that you want to find the starting point(s) of your project.
@@ -690,14 +690,14 @@ You can do this with the help of `--max-parents=0`, which
 would give you all the root commits:
 
 ```
-$ git log --max-parents=0 --oneline
+git log --max-parents=0 --oneline
 ```
 
 #### Summarizing contributions
 Ever wondered how many commits you've contributed to a project? Or perhaps, who is the most active developer during the last month (with respect to the number of commits)? Well, wonder no more, because this is what git shortlog is good for:
 
 ```
-$ git shortlog -s -n
+git shortlog -s -n
 ```
 
 #### Viewing a revision and a file at revision
@@ -706,7 +706,7 @@ Sometimes, you might want to examine a single revision (for example, a commit su
 For example, to examine the grandparent of the current version, use the following command:
 
 ```
-$ git show HEAD^^
+git show HEAD^^
 ```
 
 
@@ -723,7 +723,7 @@ $ git show HEAD^^
 
 
 > ``` 
-> $ git log -1
+> git log -1
 > ```
 
 
@@ -746,7 +746,7 @@ $ git show HEAD^^
 
 
 > ``` 
-> $ git log --oneline
+> git log --oneline
 > ```
 
 
@@ -771,7 +771,7 @@ $ git show HEAD^^
 
 
 > ``` 
-> $ git log --oneline --graph
+> git log --oneline --graph
 > ```
 
 
@@ -797,10 +797,10 @@ $ git show HEAD^^
 >     
 >     
 >     ``` 
->     $ mkdir spaceships
->     $ git status
->     $ git add spaceships
->     $ git status
+>     mkdir spaceships
+>     git status
+>     git add spaceships
+>     git status
 >     ```
 >     
 >     
@@ -833,10 +833,10 @@ $ git show HEAD^^
 >     
 >     
 >     ``` 
->     $ touch spaceships/apollo-11 spaceships/sputnik-1
->     $ git status
->     $ git add spaceships
->     $ git status
+>     touch spaceships/apollo-11 spaceships/sputnik-1
+>     git status
+>     git add spaceships
+>     git status
 >     ```
 >     
 >     
@@ -846,7 +846,7 @@ $ git show HEAD^^
 >     
 >     
 >     ``` 
->     $ git commit -m "Add some initial thoughts on spaceships"
+>     git commit -m "Add some initial thoughts on spaceships"
 >     ```
 >     
 >     

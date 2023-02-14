@@ -27,7 +27,7 @@ flag to specify the location of the inventory file if not using the
 default. Hypothetically, this might look like the following example:
 
 ```
-$ ansible -i /root/Desktop/gitlab-ci-ansible-course/Lab_15/my_inventory all -m ping
+ansible -i /root/Desktop/gitlab-ci-ansible-course/Lab_15/my_inventory all -m ping
 ```
 
 
@@ -84,7 +84,7 @@ Now if you were to run the preceding inventory within Ansible, using a
 simple [shell] command, the result would appear as follows:
 
 ```
-$ ansible -i /etc/ansible/my_inventory.yaml all -m shell -a 'echo hello-yaml' -f 5
+ansible -i /etc/ansible/my_inventory.yaml all -m shell -a 'echo hello-yaml' -f 5
 
 
 target1.example.com | CHANGED | rc=0 >>
@@ -218,7 +218,7 @@ the command line. For example, in the last section we ran, we can use
 the following:
 
 ```
-$ ansible -i /etc/ansible/my_inventory.yaml all -m shell -a 'echo hello-yaml' -f 5
+ansible -i /etc/ansible/my_inventory.yaml all -m shell -a 'echo hello-yaml' -f 5
 ```
 
 Note the [all] keyword in the middle of that line. That is the
@@ -229,7 +229,7 @@ from the previous YAML inventory, we would run this variation of the
 command:
 
 ```
-$ ansible -i hostgroups-yml centos -m shell -a 'echo hello-yaml' -f 5
+ansible -i hostgroups-yml centos -m shell -a 'echo hello-yaml' -f 5
 
 app01.example.com | CHANGED | rc=0 >>
 hello-yaml
@@ -331,7 +331,7 @@ If we run an ad hoc command against this inventory, we can see the
 contents of both of these variables:
 
 ```
-$ ansible -i hostvars1-hostgroups-ini frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
+ansible -i hostvars1-hostgroups-ini frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
 
 frt01.example.com | SUCCESS => {
     "msg": "Connecting to lb.example.com, listening on 8443"
@@ -363,7 +363,7 @@ as before against our newly organized inventory, we see that the result
 is the same:
 
 ```
-$ ansible -i groupvars1-hostgroups-ini frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
+ansible -i groupvars1-hostgroups-ini frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
 
 frt01.example.com | SUCCESS => {
     "msg": "Connecting to lb.example.com, listening on 8443"
@@ -396,7 +396,7 @@ Now if we run our ad hoc command again with the new inventory, we can
 see that we have overridden the variable on one host:
 
 ```
-$ ansible -i hostvars2-hostgroups-ini frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
+ansible -i hostvars2-hostgroups-ini frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
 
 
 frt01.example.com | SUCCESS => {
@@ -432,7 +432,7 @@ Running the same ad hoc command as before, you can see that the result
 is the same as for our INI-formatted inventory:
 
 ```
-$ ansible -i hostvars2-hostgroups-yml frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
+ansible -i hostvars2-hostgroups-yml frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
 
 frt01.example.com | SUCCESS => {
     "msg": "Connecting to lb.example.com, listening on 8444"
@@ -452,15 +452,15 @@ frt02.example.com | SUCCESS => {
 Let\'s start by creating a new directory structure for this purpose:
 
 ```
-$ mkdir vartree
-$ cd vartree
+mkdir vartree
+cd vartree
 ```
 
 6.  Now, under this directory, we\'ll create two more directories for
     the variables:
 
 ```
-$ mkdir host_vars group_vars
+mkdir host_vars group_vars
 ```
 
 7.  Now, under the [host\_vars] directory, we\'ll create a file
@@ -506,7 +506,7 @@ dbms02.example.com
 Just for clarity, your final directory structure should look like this:
 
 ```
-$  tree
+ tree
 .
 ├── group_vars
 │   └── frontends.yml
@@ -521,8 +521,8 @@ $  tree
     happens:
 
 ```
-$ cd /root/Desktop/gitlab-ci-ansible-course/Lab_15/vartree
-$ ansible -i inventory frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
+cd /root/Desktop/gitlab-ci-ansible-course/Lab_15/vartree
+ansible -i inventory frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
 
 frt02.example.com | SUCCESS => {
     "msg": "Connecting to lb.example.com, listening on 8443"
@@ -542,7 +542,7 @@ all of the variable files.
     directory structure but now with directories instead:
 
 ```
-$ tree
+tree
 .
 ├── group_vars
 │   └── frontends
@@ -565,7 +565,7 @@ Even with more finely divided directory structure, the result of
 running the ad hoc command is still the same:
 
 ```
-$ ansible -i inventory frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
+ansible -i inventory frontends -m debug -a "msg=\"Connecting to {{ lb_vip }}, listening on {{ https_port }}\""
 
 frt01.example.com | SUCCESS => {
     "msg": "Connecting to lb.example.com, listening on 8444"
@@ -619,8 +619,8 @@ Now, let\'s run an ad hoc command to see what value of [testvar]
 is actually set:
 
 ```
-$ cd /root/Desktop/gitlab-ci-ansible-course/Lab_15
-$ ansible -i hostgroups-children-vars-ini ubuntu -m debug -a "var=testvar"
+cd /root/Desktop/gitlab-ci-ansible-course/Lab_15
+ansible -i hostgroups-children-vars-ini ubuntu -m debug -a "var=testvar"
 
 frt01.example.com | SUCCESS => {
     "testvar": "childgroup"
@@ -680,7 +680,7 @@ output concise and readable:
     all hosts in the inventory:
 
 ```
-$ ansible -i hostgroups-children-ini all --list-hosts
+ansible -i hostgroups-children-ini all --list-hosts
 
   hosts (7):
     loadbalancer.example.com
@@ -697,7 +697,7 @@ be quoted in single quotes for the shell to interpret the command
 properly:
 
 ```
-$ ansible -i hostgroups-children-ini '*' --list-hosts
+ansible -i hostgroups-children-ini '*' --list-hosts
 
   hosts (7):
     loadbalancer.example.com
@@ -713,7 +713,7 @@ $ ansible -i hostgroups-children-ini '*' --list-hosts
     hosts either in this group or that group,\" as in this example:
 
 ```
-$ ansible -i hostgroups-children-ini frontends:apps --list-hosts
+ansible -i hostgroups-children-ini frontends:apps --list-hosts
 
   hosts (4):
     frt01.example.com
@@ -729,7 +729,7 @@ $ ansible -i hostgroups-children-ini frontends:apps --list-hosts
     string in single quotes for it to work, as in this example:
 
 ```
-$ ansible -i hostgroups-children-ini 'all:!apps' --list-hosts
+ansible -i hostgroups-children-ini 'all:!apps' --list-hosts
 
   hosts (5):
     loadbalancer.example.com
@@ -745,7 +745,7 @@ $ ansible -i hostgroups-children-ini 'all:!apps' --list-hosts
     in the shell):
 
 ```
-$ ansible -i hostgroups-children-ini 'centos:&apps' --list-hosts
+ansible -i hostgroups-children-ini 'centos:&apps' --list-hosts
 
   hosts (2):
     app01.example.com
@@ -756,7 +756,7 @@ $ ansible -i hostgroups-children-ini 'centos:&apps' --list-hosts
     in the shell, as in this example:
 
 ```
-$ ansible -i hostgroups-children-ini 'db*.example.com' --list-hosts
+ansible -i hostgroups-children-ini 'db*.example.com' --list-hosts
 
   hosts (2):
     dbms02.example.com
@@ -773,7 +773,7 @@ following:
 
 
 ```
-$ ansible-playbook -i hostgroups-children-ini site.yml --limit frontends:apps
+ansible-playbook -i hostgroups-children-ini site.yml --limit frontends:apps
 
 
 PLAY [A simple playbook for demonstrating inventory patterns] ******************

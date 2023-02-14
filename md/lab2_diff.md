@@ -11,9 +11,9 @@ Before we start, let's make a change to `mars.txt`, adding yet another line.
 
 
 ``` 
-$ cd ~/Desktop/planets
-$ nano mars.txt
-$ cat mars.txt
+cd ~/Desktop/planets
+nano mars.txt
+cat mars.txt
 ```
 
 
@@ -34,7 +34,7 @@ Now, let's see what we get.
 
 
 ``` 
-$ git diff HEAD mars.txt
+git diff HEAD mars.txt
 ```
 
 
@@ -65,7 +65,7 @@ before `HEAD`.
 
 
 ``` 
-$ git diff HEAD~1 mars.txt
+git diff HEAD~1 mars.txt
 ```
 
 
@@ -79,7 +79,7 @@ them:
 
 
 ``` 
-$ git diff HEAD~3 mars.txt
+git diff HEAD~3 mars.txt
 ```
 
 
@@ -108,7 +108,7 @@ working directory that we see by using `git diff`.
 
 
 ``` 
-$ git show HEAD~3 mars.txt
+git show HEAD~3 mars.txt
 ```
 
 
@@ -149,7 +149,7 @@ unique: every change to any set of files on any computer has a unique
 
 
 ``` 
-$ git diff UPDATE_ID_HERE mars.txt
+git diff UPDATE_ID_HERE mars.txt
 ```
 
 
@@ -177,7 +177,7 @@ seven for normal size projects):
 
 
 ``` 
-$ git diff UPDATE_ID_HERE mars.txt
+git diff UPDATE_ID_HERE mars.txt
 ```
 
 
@@ -208,7 +208,7 @@ the file has been changed, but those changes haven't been staged:
 
 
 ``` 
-$ git status
+git status
 ```
 
 
@@ -234,8 +234,8 @@ We can put things back the way they were by using
 
 
 ``` 
-$ git checkout HEAD mars.txt
-$ cat mars.txt
+git checkout HEAD mars.txt
+cat mars.txt
 ```
 
 
@@ -258,13 +258,13 @@ back even further, we can use a commit identifier instead:
 
 
 ``` 
-$ git checkout UPDATE_ID_HERE mars.txt
+git checkout UPDATE_ID_HERE mars.txt
 ```
 
 
 
 ``` 
-$ cat mars.txt
+cat mars.txt
 ```
 
 
@@ -277,7 +277,7 @@ Cold and dry, but everything is my favorite color
 
 
 ``` 
-$ git status
+git status
 ```
 
 
@@ -300,7 +300,7 @@ put things back the way they were by using
 
 
 ``` 
-$ git checkout HEAD mars.txt
+git checkout HEAD mars.txt
 ```
 
 

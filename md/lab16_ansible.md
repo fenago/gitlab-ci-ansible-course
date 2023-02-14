@@ -102,7 +102,7 @@ Let\'s see how our newly created playbook behaves when we run it:
 
 
 ```
-$ ansible-playbook -i hosts myplaybook.yaml
+ansible-playbook -i hosts myplaybook.yaml
 
 PLAY [frontends] ***************************************************************
 
@@ -173,15 +173,15 @@ Let's change the default Apache port using template as port 80 is already in use
 You can install apache2 by running `apt-get install -y apache2`. It can also installed by running following playbook:
 
 ```
-$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_14
-$ ansible-playbook update-apache-version.yml
+cd ~/Desktop/gitlab-ci-ansible-course/Lab_14
+ansible-playbook update-apache-version.yml
 ```
 
 
 If we run this task a first time, we will see the following results:
 
 ```
-$ ansible-playbook -i hosts handlers1.yml
+ansible-playbook -i hosts handlers1.yml
 
 PLAY [Handler demo 1] **********************************************************
 
@@ -207,7 +207,7 @@ any changes to the template or configuration file, we will see something
 like this:
 
 ```
-$ ansible-playbook -i hosts handlers1.yml
+ansible-playbook -i hosts handlers1.yml
 
 PLAY [Handler demo 1] **********************************************************
 
@@ -261,7 +261,7 @@ the [changed] value, and so, in this demo playbook, the handlers
 will always be notified:
 
 ```
-$ ansible-playbook -i hosts handlers2.yml
+ansible-playbook -i hosts handlers2.yml
 
 PLAY [Handler demo 1] **********************************************************
 
@@ -297,9 +297,9 @@ ensure the service is running (and runs at boot time).
 To perform these commands in the shell, you might do the following:
 
 ```
-$ sudo apt install apache2
-$ sudo service apache2 start
-$ sudo service apache2 status
+sudo apt install apache2
+sudo service apache2 start
+sudo service apache2 status
 ```
 
 **Note:** Start will fail because port 80 is alredy in use by lab environment. make sure tha  `/etc/apache2/ports.conf` is updated; port `80` with port `81`.
@@ -312,7 +312,7 @@ service---in this case, you could run an ad hoc command similar to the
 following (again, we will perform it only on one host for conciseness):
 
 ```
-$ ansible -i hosts frt01* -m service -a "name=apache2 state=restarted"
+ansible -i hosts frt01* -m service -a "name=apache2 state=restarted"
 ```
 
 When run successfully, you will see pages of shell output containing all
@@ -365,7 +365,7 @@ playbook. There is a new concept here, loops, which we haven\'t covered
 yet, but don\'t worry, we will cover this later in this lab:
 
 ```
-$ ansible-playbook -i hosts installapache.yml
+ansible-playbook -i hosts installapache.yml
 
 PLAY [Install Apache] **********************************************************
 
@@ -454,7 +454,7 @@ presence of the [PLAY] keyword, which denotes the start of each
 play:
 
 ```
-$ ansible-playbook -i hosts playandtask.yml
+ansible-playbook -i hosts playandtask.yml
 
 PLAY [Play 1 - configure the frontend servers] *********************************
 
@@ -584,7 +584,7 @@ first role:\
     this:
 
 ```
-$ mkdir -p roles/installapache/tasks
+mkdir -p roles/installapache/tasks
 ```
 
 2.  Now, let\'s create the mandatory [main.yml] inside the
@@ -675,8 +675,8 @@ using [ansible-playbook] in the normal way---you should see output
 similar to this:
 
 ```
-$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_16/role-example1
-$ ansible-playbook -i hosts site.yml
+cd ~/Desktop/gitlab-ci-ansible-course/Lab_16/role-example1
+ansible-playbook -i hosts site.yml
 
 PLAY [Install Apache using a role] *********************************************
 
@@ -772,7 +772,7 @@ this playbook---nothing else is called from the playbook itself.
     data; instead, it will just contain a [meta] directory:
 
 ```
-$ mkdir -p roles/platform/meta
+mkdir -p roles/platform/meta
 ```
 
 Inside this directory, create a file called [main.yml] with the
@@ -800,7 +800,7 @@ been passed to it each time it is referred to as a dependency.
     this will contain no tasks, but more dependency declarations:
 
 ```
-$ mkdir -p roles/linuxtype/meta/
+mkdir -p roles/linuxtype/meta/
 ```
 
 Again, create a [main.yml] file in the [meta] directory, but
@@ -821,8 +821,8 @@ on roles called [version] and [network].
     [meta] and [tasks] directories in it:
 
 ```
-$ mkdir -p roles/version/meta
-$ mkdir -p roles/version/tasks
+mkdir -p roles/version/meta
+mkdir -p roles/version/tasks
 ```
 
 In the [meta] directory, we\'ll create a [main.yml] file
@@ -857,8 +857,8 @@ passed to the role:
     contents as the [version] role:
 
 ```
-$ mkdir -p roles/network/meta
-$ mkdir -p roles/network/tasks
+mkdir -p roles/network/meta
+mkdir -p roles/network/tasks
 ```
 
 In the [meta] directory, we\'ll again create
@@ -924,7 +924,7 @@ we originally specified the dependencies in the [platform] role).
 However, when we run it, we actually see this:
 
 ```
-$ ansible-playbook -i hosts site.yml
+ansible-playbook -i hosts site.yml
 
 PLAY [Role variables and meta playbook] ****************************************
 
@@ -979,7 +979,7 @@ meaning it is a role parameter. Now, when we run the playbook, we get
 the results that we had hoped for:
 
 ```
-$ ansible-playbook -i hosts site.yml
+ansible-playbook -i hosts site.yml
 
 PLAY [Role variables and meta playbook] ****************************************
 
@@ -1048,7 +1048,7 @@ one of these, we could download it into our roles directory using the
 following command:
 
 ```
-$ ansible-galaxy role install -p roles/ arillso.motd
+ansible-galaxy role install -p roles/ arillso.motd
 ```
 
 That\'s all you need to do---once the download is complete, you can
@@ -1066,10 +1066,10 @@ saves all of the manual directory and file creation we have been
 undertaking in this lab, as in this example:
 
 ```
-$ ansible-galaxy role init --init-path roles/ testrole
+ansible-galaxy role init --init-path roles/ testrole
 
 - Role testrole was created successfully
-$ tree roles/testrole/
+tree roles/testrole/
 roles/testrole/
 ├── defaults
 │   └── main.yml
@@ -1153,8 +1153,8 @@ mine are), you should see output similar to the following:
 
 ```
 
-$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_16
-$ ansible-playbook -i hosts condition.yml
+cd ~/Desktop/gitlab-ci-ansible-course/Lab_16
+ansible-playbook -i hosts condition.yml
 
 PLAY [Play to patch only CentOS systems] ***************************************
 
@@ -1205,7 +1205,7 @@ had the patch applied. All other systems were skipped because they did
 not match my logical expression:
 
 ```
-$ ansible-playbook -i hosts condition2.yml
+ansible-playbook -i hosts condition2.yml
 
 PLAY [Play to patch only Ubuntu systems] ***************************************
 
@@ -1259,7 +1259,7 @@ file named [hosts], then you should see output similar to the
 following:
 
 ```
-$ ansible-playbook condition3.yml
+ansible-playbook condition3.yml
 
 [WARNING]: provided hosts list is empty, only localhost is available. Note that
 the implicit localhost does not match 'all'
@@ -1284,7 +1284,7 @@ localhost : ok=3 changed=1 unreachable=0 failed=0 skipped=0 rescued=0 ignored=0
 Yet, if the file doesn\'t exist, then you\'ll see that the [debug] message gets skipped:
 
 ```
-$ ansible-playbook condition3.yml
+ansible-playbook condition3.yml
 
 
 [WARNING]: provided hosts list is empty, only localhost is available. Note that
@@ -1406,7 +1406,7 @@ to be echoed. Hence, if we run this playbook, we should see output
 similar to the following:
 
 ```
-$ ansible-playbook -i hosts loop1.yml
+ansible-playbook -i hosts loop1.yml
 
 
 PLAY [Simple loop demo play] ***************************************************
@@ -1452,7 +1452,7 @@ Now, when we run this, we see that the task is skipped until we reach
 the integer value of 4 and higher in the loop contents:
 
 ```
-$ ansible-playbook -i hosts loop2.yml
+ansible-playbook -i hosts loop2.yml
 
 PLAY [Simple loop demo play] ***************************************************
 
@@ -1513,7 +1513,7 @@ output is truncated in the interests of space but demonstrates the kind
 of results you should expect from running this playbook:
 
 ```
-$ ansible-playbook -i hosts loop3.yml
+ansible-playbook -i hosts loop3.yml
 
 PLAY [Simple loop demo play] ***************************************************
 
@@ -1605,7 +1605,7 @@ the data defined by the outer loop. As the loop variable names do not
 clash, all works exactly as we would expect:
 
 ```
-$ ansible-playbook loopmain.yml
+ansible-playbook loopmain.yml
 
 
 
@@ -1748,7 +1748,7 @@ skipped---depending on the makeup and contents of your inventory, it
 might look something like this:
 
 ```
-$ ansible-playbook -i hosts blocks.yml
+ansible-playbook -i hosts blocks.yml
 
 PLAY [Conditional block play] **************************************************
 
@@ -1839,7 +1839,7 @@ the following when you execute this playbook, noting that we have
 deliberately created two error conditions to demonstrate the flow:
 
 ```
-$ ansible-playbook -i hosts blocks-error.yml
+ansible-playbook -i hosts blocks-error.yml
 
 PLAY [Play to demonstrate block error handling] ********************************
 
@@ -1921,7 +1921,7 @@ to the following:
 
 
 ```
-$ ansible-playbook -i hosts debug.yml
+ansible-playbook -i hosts debug.yml
 
 PLAY [Play to demonstrate the debug strategy] **********************************
 
@@ -1940,7 +1940,7 @@ fatal: [frt01.example.com]: FAILED! => {"msg": "The task includes an option with
 ...
 [frt02.prod.com] TASK: make an error with refering incorrect variable (debug)> quit
 User interrupted execution
-$ 
+
 ```
 
 
@@ -1993,7 +1993,6 @@ Hence, this should be enough information to fix your playbook. Enter
 ```
 [frt01.example.com] TASK: Generate an error by referencing an undefined variable (debug)> q
 User interrupted execution
-$
 ```
 
 The Ansible debugger is an incredibly powerful tool and you should learn
@@ -2014,7 +2013,7 @@ day based on variable content. To do this, we will run the following
 command (which we\'ll break down in a minute):
 
 ```
-$ ansible-pull -d /var/ansible-set-motd -i ${HOSTNAME}, -U https://github.com/fenago/ansible-set-motd.git site.yml -e "ag_motd_content='MOTD generated by ansible-pull'" >> /tmp/ansible-pull.log 2>&1
+ansible-pull -d /var/ansible-set-motd -i ${HOSTNAME}, -U https://github.com/fenago/ansible-set-motd.git site.yml -e "ag_motd_content='MOTD generated by ansible-pull'" >> /tmp/ansible-pull.log 2>&1
 ```
 
 
@@ -2023,7 +2022,7 @@ following (note that log redirection has been removed to make it easier
 to see the output):
 
 ```
-$ ansible-pull -d /var/ansible-set-motd -i ${HOSTNAME}, -U https://github.com/fenago/ansible-set-motd.git site.yml -e "ag_motd_content='MOTD generated by ansible-pull'"
+ansible-pull -d /var/ansible-set-motd -i ${HOSTNAME}, -U https://github.com/fenago/ansible-set-motd.git site.yml -e "ag_motd_content='MOTD generated by ansible-pull'"
 
 
 

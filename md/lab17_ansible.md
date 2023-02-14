@@ -53,7 +53,7 @@ which module you want to run. Hence, one of the simplest commands you
 can run is the Ansible [ping] command, as shown here:
 
 ```
-$ ansible -i hosts appservers -m ping
+ansible -i hosts appservers -m ping
 ```
 
 Now, one thing we have not previously looked at is the communication
@@ -62,7 +62,7 @@ the preceding command:
 
 
 ```
-$ ansible -i hosts appservers -m ping
+ansible -i hosts appservers -m ping
 
 app01.example.com | SUCCESS => {
     "ansible_facts": {
@@ -87,7 +87,7 @@ Now, let\'s run another command that takes an argument and passes that
 data to the module:
 
 ```
-$ ansible -i hosts appservers -m command -a "/bin/echo 'hello modules'"
+ansible -i hosts appservers -m command -a "/bin/echo 'hello modules'"
 ```
 
 In this case, we provided a single string as an argument to the command
@@ -97,7 +97,7 @@ you will see an output similar to the following:
 
 
 ```
-$  ansible -i hosts appservers -m command -a "/bin/echo 'hello modules'"
+ ansible -i hosts appservers -m command -a "/bin/echo 'hello modules'"
 
 app01.example.com | CHANGED | rc=0 >>
 hello modules
@@ -120,7 +120,7 @@ The following are some examples to show you how to interact with the
     command:
 
 ```
-$ ansible-doc -l
+ansible-doc -l
 ```
 
 You should see an output similar to the following:
@@ -147,7 +147,7 @@ There are many pages of output, which just shows you how many modules
 there are! In fact, you can count them:
 
 ```
-$ ansible-doc -l | wc -l
+ansible-doc -l | wc -l
 
 3387
 ```
@@ -160,7 +160,7 @@ That\'s right -- 3,387 modules ship with Ansible 2.9
     as we did interactively in the web browser in the previous section:
 
 ```
-$ ansible-doc -l | grep ping
+ansible-doc -l | grep ping
 
 
 fortios_firewall_shaping_policy                               Configure sha...
@@ -189,13 +189,13 @@ win_ping                                                      A windows ver...
 
 
 ```
-$ ansible-doc ping
+ansible-doc ping
 ```
 
 This should produce an output similar to the following:
 
 ```
-$ ansible-doc ping
+ansible-doc ping
 
 
 > PING    (/usr/lib/python3/dist-packages/ansible/modules/system/ping.py)
@@ -232,14 +232,14 @@ return values for this module:
 
 
 ```
-$ ansible-doc ping
+ansible-doc ping
 ```
 
 If you scroll to the bottom of the output from the preceding command,
 you should see something like this:
 
 ```
-$ ansible-doc ping
+ansible-doc ping
 
 
 ...
@@ -288,7 +288,7 @@ dump the return values onto the Terminal:
 Now, let\'s see what happens when we run this playbook:
 
 ```
-$ ansible-playbook retval.yml
+ansible-playbook retval.yml
 
 
 PLAY [Simple play to demonstrate a return value] *******************************
@@ -338,8 +338,8 @@ module in Python:
     packages you need:
 
 ```
-$ sudo add-apt-repository universe
-$ sudo apt-get install python3-pip
+sudo add-apt-repository universe
+sudo apt-get install python3-pip
 ```
 
 
@@ -350,9 +350,9 @@ development process. Use the following command to clone the Ansible
 repository to your current directory on your development machine:
 
 ```
-$ cd ~ && git clone https://github.com/ansible/ansible.git
-$ cd ansible
-$ python -m virtualenv moduledev
+cd ~ && git clone https://github.com/ansible/ansible.git
+cd ansible
+python -m virtualenv moduledev
 ```
 
 With our development environment set up, let\'s start writing our first
@@ -366,7 +366,7 @@ machine. Now, let\'s start coding our first module:
 1.  Using vscode / vi editor, create a new file called (for example) [remote\_filecopy.py]:
 
 ```
-$ vi remote_filecopy.py
+vi remote_filecopy.py
 ```
 
 2.  Start with a shebang to indicate that this module should be executed
@@ -602,9 +602,9 @@ module can really perform the file copy:
 
 
 ```
-$ touch /tmp/foo
-$ . moduledev/bin/activate
-$ . hacking/env-setup
+touch /tmp/foo
+. moduledev/bin/activate
+. hacking/env-setup
 ```
 
 ### Note
@@ -717,9 +717,9 @@ Let\'s get started:
 **Close all terminals and open new terminal**
 
 ```
-$ cd ~/ansible
-$ python3 -m venv venv
-$ . venv/bin/activate
+cd ~/ansible
+python3 -m venv venv
+. venv/bin/activate
 
 (venv) $ source hacking/env-setup
 
@@ -749,8 +749,8 @@ can manually tell [ansible-doc] where to look for modules instead
 of the default path. This means that you could run the following:
 
 ```
-$ cd ~/ansible
-$ ansible-doc -M moduledev/ remote_filecopy
+cd ~/ansible
+ansible-doc -M moduledev/ remote_filecopy
 ```
 
 You should be presented with the textual rendering of the documentation
@@ -786,22 +786,22 @@ outline here:
     in preparation for the build process to come:
 
 ```
-$ cp moduledev/remote_filecopy.py lib/ansible/modules/
+cp moduledev/remote_filecopy.py lib/ansible/modules/
 ```
 
 2.  Change to the [docs/docsite/] directory as the next step in
     the documentation creation process:
 
 ```
-$ cd docs/docsite/
+cd docs/docsite/
 ```
 
 3.  Build a documentation-based Python file. Use the following command
     to do so:
 
 ```
-$ pip3 install -r requirements.txt 
-$ MODULES=hello_module make webdocs
+pip3 install -r requirements.txt 
+MODULES=hello_module make webdocs
 ```
 
 
@@ -831,7 +831,7 @@ tells us where to look for the compiled documentation. If you look in
 here, you will find the following:
 
 ```
-$ find /root/ansible/docs/docsite -name *remote_filecopy*
+find /root/ansible/docs/docsite -name *remote_filecopy*
 
 /root/ansible/docs/docsite/rst/modules/better_remote_filecopy_module.rst
 /root/ansible/docs/docsite/_build/html/modules/better_remote_filecopy_module.html
@@ -862,11 +862,11 @@ subdirectory called [library/] and will run referenced modules
 from here. Hence, we might create the following:
 
 ```
-$ cd ~
-$ mkdir testplaybook
-$ cd testplaybook
-$ mkdir library
-$ cp ~/ansible/moduledev/remote_filecopy.py library/
+cd ~
+mkdir testplaybook
+cd testplaybook
+mkdir library
+cp ~/ansible/moduledev/remote_filecopy.py library/
 ```
 
 Now, create a simple inventory file in this playbook directory, just as
@@ -903,8 +903,8 @@ testplaybook
 Now, try running the playbook in the usual manner and see what happens:
 
 ```
-$ cd ~/Desktop/gitlab-ci-ansible-course/Lab_17/testplaybook
-$ ansible-playbook -i hosts testplaybook.yml
+cd ~/Desktop/gitlab-ci-ansible-course/Lab_17/testplaybook
+ansible-playbook -i hosts testplaybook.yml
 
 
 PLAY [Playbook to test custom module] ******************************************

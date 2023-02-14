@@ -27,7 +27,7 @@ cd Lab_13
 You can run the `ansible --version` command, you will see output similar to the following: 
 
 ```
-$ ansible --version
+ansible --version
 ansible 2.9.6
   config file = None
   configured module search path = ['/Users/james/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
@@ -79,7 +79,7 @@ following [ansible] command, you see a similar output to this: 
 
 
 ```
-$ ansible webservers -m ping 
+ansible webservers -m ping 
 
 web1.example.com | SUCCESS => {
     "changed": false, 
@@ -89,7 +89,6 @@ web2.example.com | SUCCESS => {
     "changed": false, 
     "ping": "pong"
 }
-$
 ```
 
 
@@ -133,21 +132,21 @@ of the configuration:
     inventory hosts using the following command:
 
 ```
-$ ansible frontends -i hosts -m ping
+ansible frontends -i hosts -m ping
 ```
 
 -   **Display gathered facts**:** **You can display gathered facts about
     your inventory hosts using the following command:
 
 ```
-$ ansible frontends -i hosts -m setup | less
+ansible frontends -i hosts -m setup | less
 ```
 
 -   **Filter gathered facts**: You can filter gathered facts using the
     following command:
 
 ```
-$ ansible frontends -i hosts -m setup -a "filter=ansible_distribution*"
+ansible frontends -i hosts -m setup -a "filter=ansible_distribution*"
 ```
 
 
@@ -160,7 +159,7 @@ format---the following example output results from running the
 
 
 ```
-$ ansible frontends -m ping 
+ansible frontends -m ping 
 
 frontend01.example.com | SUCCESS => {
     "changed": false, 
@@ -177,7 +176,7 @@ The following is an example of the filtered facts from a host:
 
 
 ```
-$ ansible localhost -m setup -a "filter=ansible_distribution*"
+ansible localhost -m setup -a "filter=ansible_distribution*"
 
 localhost | SUCCESS => {
     "ansible_facts": {
@@ -206,7 +205,7 @@ hoc examples for you to consider:
     [frontends] group with the following command:
 
 ```
-$ ansible frontends -m copy -a "src=/etc/hosts dest=/root/Desktop/hosts"
+ansible frontends -m copy -a "src=/etc/hosts dest=/root/Desktop/hosts"
 ```
 
 -   Create a new directory on all hosts in the
@@ -214,14 +213,14 @@ $ ansible frontends -m copy -a "src=/etc/hosts dest=/root/Desktop/hosts"
     ownership and permissions:
 
 ```
-$ ansible frontends -m file -a "dest=/path/user1/new mode=777 owner=user1 group=user1 state=directory" 
+ansible frontends -m file -a "dest=/path/user1/new mode=777 owner=user1 group=user1 state=directory" 
 ```
 
 -   Delete a specific directory from all hosts in the [frontends]
     group with the following command:
 
 ```
-$ ansible frontends -m file -a "dest=/path/user1/new state=absent"
+ansible frontends -m file -a "dest=/path/user1/new state=absent"
 ```
 
 -   Install the [apache2] package with [apt] if it is not
@@ -229,7 +228,7 @@ $ ansible frontends -m file -a "dest=/path/user1/new state=absent"
     applies to all hosts in the [frontends] inventory group:
 
 ```
-$ ansible frontends -m apt -a "name=apache2 state=present"
+ansible frontends -m apt -a "name=apache2 state=present"
 ```
 
 -   The following command is similar to the previous one, except that
@@ -238,14 +237,14 @@ $ ansible frontends -m apt -a "name=apache2 state=present"
     present, and update it to the latest version if it is present:
 
 ```
-$ ansible frontends -m apt -a "name=apache2 state=latest" 
+ansible frontends -m apt -a "name=apache2 state=latest" 
 ```
 
 -   Display all facts about all the hosts in your inventory
     (warning---this will produce a lot of JSON!):
 
 ```
-$ ansible all -m setup 
+ansible all -m setup 
 ```
 
 Now that you have learned more about verifying your Ansible installation
@@ -265,8 +264,8 @@ Let\'s get started by checking out the very latest version of the source code fr
     and then change to the directory containing the checked-out code:
 
 ```
-$ git clone https://github.com/ansible/ansible.git --recursive
-$ cd ./ansible
+git clone https://github.com/ansible/ansible.git --recursive
+cd ./ansible
 ```
 
 
@@ -279,7 +278,7 @@ $ cd ./ansible
     environment with the following command:
 
 ```
-$ source ./hacking/env-setup
+source ./hacking/env-setup
 ```
 
 
@@ -291,7 +290,7 @@ $ source ./hacking/env-setup
     command if you already have [pip] on your system):
 
 ```
-$ sudo pip3 install -r ./requirements.txt
+sudo pip3 install -r ./requirements.txt
 ```
 
 
@@ -309,8 +308,8 @@ inventory file other than [/etc/ansible/hosts].
     contents are almost certainly going to vary:
 
 ```
-$ echo "ap1.example.com" > ~/my_ansible_inventory
-$ export ANSIBLE_INVENTORY=~/my_ansible_inventory
+echo "ap1.example.com" > ~/my_ansible_inventory
+export ANSIBLE_INVENTORY=~/my_ansible_inventory
 ```
 
 
@@ -322,7 +321,7 @@ your home directory, you could run the ad hoc [ping] command that
 we are now familiar with, as follows:
 
 ```
-$ ~/ansible/bin/ansible all -m ping
+~/ansible/bin/ansible all -m ping
 
 ap1.example.com | SUCCESS => {
     "changed": false, 
