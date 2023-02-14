@@ -1,5 +1,5 @@
-Lab: Exploring Project History
-------------------------------
+Lab: Git Source Control Management
+----------------------------------
 
 
 **Creating a Repository**

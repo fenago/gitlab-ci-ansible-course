@@ -1,5 +1,5 @@
 
-# GitLab CI Pipeline. Build docker image in pipeline job.
+## GitLab CI Pipeline. Build docker image in pipeline job.
 
 Gitlab allows seamlessly using docker image from public and private
 hubs. I bet that most of you uses docker executors. All works great and
@@ -9,12 +9,12 @@ by leveraging docker-in-docker image build.
 I'll show you how to include docker image build in Gitlab CI Pipeline,
 push it to Gitlab Repo and use it in another job.
 
-# Prerequisite
+### Prerequisite
 
 -   Gitlab account
 -   Docker basic knowledge
 
-# Agenda
+### Agenda
 
 1.  Create Gitlab blank project
 2.  Create Dockerfile
@@ -24,7 +24,7 @@ push it to Gitlab Repo and use it in another job.
     3.  Be efficient!
 4.  Summary
 
-# Create new GitLab project
+### Create new GitLab project
 
 Create new blank project which we will use
 throughout this lab. Login into GitLab and navigate to
@@ -80,7 +80,7 @@ Our Dockerfile couldn't be more simple:
 Dockerfile is ready. Push it to Gitlab repo or create Dockerfile
 directly in Gitlab.
 
-# Create Gitlab CI pipeline (.gitlab-ci.yml) 
+## Create Gitlab CI pipeline (.gitlab-ci.yml) 
 
 We will now create Gitlab CI pipeline and there are two options we could
 use:

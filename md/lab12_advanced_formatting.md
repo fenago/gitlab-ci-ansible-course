@@ -1,19 +1,14 @@
 
-Organizing information with tables
-==================================
+Lab: Advanced Gitlab Formatting
+================================
 
-
-
-You can build tables to organize information in comments, issues, pull
-requests, and wikis.
 
 
 Creating a table
----------------------------------------------
+------------------
 
-**Note:** Create a GitHub repository or create README.md in the exisitng repository before starting the lab:
+**Note:** Create a Gitlab repository or create README.md in the exisitng repository before starting the lab.
 
-![](./images/3.png)
 
 You can create tables with pipes `|` and hyphens `-`. Hyphens are used
 to create each column\'s header, while pipes separate each column. You
@@ -42,7 +37,7 @@ header row.
 width](./images/table-varied-columns-rendered.png)
 
 If you are frequently editing code snippets and tables, you may benefit
-from enabling a fixed-width font in all comment fields on GitHub. For
+from enabling a fixed-width font in all comment fields on Gitlab. For
 more information, see \"[Enabling fixed-width fonts in the
 editor].\"
 
@@ -180,7 +175,7 @@ quadruple backticks.
 block](./images/fenced-code-show-backticks-rendered.png)
 
 If you are frequently editing code snippets and tables, you may benefit
-from enabling a fixed-width font in all comment fields on GitHub. For
+from enabling a fixed-width font in all comment fields on Gitlab. For
 more information, see \"[Enabling fixed-width fonts in the
 editor].\"
 

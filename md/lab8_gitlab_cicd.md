@@ -1,5 +1,4 @@
-# Lab: Create and run your first GitLab CI/CD pipeline
-
+## Lab: Create and run your first GitLab CI/CD pipeline
 
 This lab shows you how to configure and run your first CI/CD
 pipeline in GitLab.

@@ -1,4 +1,4 @@
-# Managing Merge Requests
+## Lab: Managing Merge Requests
 
 There are many different ways to create a merge request.
 

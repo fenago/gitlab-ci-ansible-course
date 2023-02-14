@@ -1,8 +1,6 @@
 # Lab: Create a GitLab Pages website from scratc
 
 
-
-
 This lab shows you how to create a Pages site from scratch using
 the [Jekyll](https://jekyllrb.com/) Static Site Generator (SSG). You
 start with a blank project and create your own CI/CD configuration file,
@@ -16,24 +14,16 @@ not need to be familiar with Jekyll or SSGs to complete this lab.
 
 To create a GitLab Pages website:
 
--   [Step 1: Create the project
-    files]
--   [Step 2: Choose a Docker
-    image]
--   [Step 3: Install
-    Jekyll]
--   [Step 4: Specify the `public` directory for
-    output]
--   [Step 5: Specify the `public` directory for
-    artifacts]
--   [Step 6: Deploy and view your
-    website]
+-  Step 1: Create the project files
+-  Step 2: Choose a Docker image
+-  Step 3: Install Jekyll
+-  Step 4: Specify the `public` directory for output
+-  Step 5: Specify the `public` directory for artifacts
+-  Step 6: Deploy and view your website
 
 ## Prerequisites
 
-You must have a [blank
-project]
-in GitLab.
+You must have a blank project in GitLab.
 
 ## Create the project files
 
@@ -44,7 +34,6 @@ Create three files in the root (top-level) directory:
 
 -   `index.html`: An HTML file you can populate with
     whatever HTML content you'd like, for example:
-
     
     
     ```
@@ -101,16 +90,6 @@ example, for a [Hexo](https://gitlab.com/pages/hexo) site, you can use
 `image: node:12.17.0`.
 
 ## Install Jekyll
-
-To run [Jekyll](https://jekyllrb.com/) locally, you must install it:
-
-1.  Open your terminal.
-2.  Install [Bundler](https://bundler.io/) by running
-    `gem install bundler`.
-3.  Create `Gemfile.lock` by running
-    `bundle install`.
-4.  Install Jekyll by running
-    `bundle exec jekyll build`.
 
 To run Jekyll in your project, edit the
 `.gitlab-ci.yml` file and add the installation
@@ -242,17 +221,6 @@ After you have completed the preceding steps, deploy your website:
     Pages daemon. GitLab runs it in the background and doesn't use a
     runner.
 
-## Other options for your CI/CD file
-
-If you want to do more advanced tasks, you can update your
-`.gitlab-ci.yml` file with [any of the available
-settings]. You can
-validate your `.gitlab-ci.yml` file with the [CI
-Lint] tool that's included with
-GitLab.
-
-The following topics show other examples of other options you can add to
-your CI/CD file.
 
 ### Deploy specific branches to a Pages site
 
@@ -518,9 +486,6 @@ Now GitLab CI/CD not only builds the website, but also:
 -   **Continuously deploys** every push to the
     `main` branch.
 
-To view the HTML and other assets that were created for the site,
-[download the job
-artifacts].
 
 
 ### Download job artifacts
