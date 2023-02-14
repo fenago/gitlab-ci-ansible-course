@@ -14,7 +14,7 @@ Note that `root` user password is **fenago**
 
 All lab file are present at below path. Run following command in the terminal first before running commands in the lab:
 
-`cd ~/Desktop/ansible-course` 
+`cd ~/Desktop/gitlab-ci-ansible-course` 
 
 <span style="color:red;">Make sure that your lab environment's `/etc/hosts` file has all host entries present in `hosts.txt` file which is located at the root folder.</span>
 
