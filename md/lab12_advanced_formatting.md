@@ -37,9 +37,7 @@ header row.
 width](./images/table-varied-columns-rendered.png)
 
 If you are frequently editing code snippets and tables, you may benefit
-from enabling a fixed-width font in all comment fields on Gitlab. For
-more information, see \"[Enabling fixed-width fonts in the
-editor].\"
+from enabling a fixed-width font in all comment fields on Gitlab.
 
 Formatting content within your table
 ----------------------------------------------------------
@@ -175,9 +173,8 @@ quadruple backticks.
 block](./images/fenced-code-show-backticks-rendered.png)
 
 If you are frequently editing code snippets and tables, you may benefit
-from enabling a fixed-width font in all comment fields on Gitlab. For
-more information, see \"[Enabling fixed-width fonts in the
-editor].\"
+from enabling a fixed-width font in all comment fields on Gitlab.
+
 
 Syntax highlighting
 ------------------------------------------------------

@@ -94,9 +94,6 @@ PING frontend.example.com (127.0.0.1) 56(84) bytes of data.
 
 
 
-<span style="color:red;"> Below steps are optional as key has been created already and copied using "ssh-copy-id" utility. Make sure to complete all instructions if new key is created as old key will be overwritten.</span>
-
-
 2.  To make the automation process seamless, we\'ll generate an SSH
     authentication key pair so that we don\'t have to type in a password
     every time we want to run a playbook. If you do not already have an
@@ -105,6 +102,9 @@ PING frontend.example.com (127.0.0.1) 56(84) bytes of data.
 ```
 ssh-keygen 
 ```
+
+<span style="color:red;">Note: Select overwrite `y` if prompted in above command.</span>
+
 
 When you run the [ssh-keygen] tool, you will see an output similar
 to the following. Note that you should leave the
@@ -116,11 +116,13 @@ which removes the convenience of authenticating with SSH keys:
 ssh-keygen 
 
 Generating public/private rsa key pair.
-Enter file in which to save the key (/Users/doh/.ssh/id_rsa): <Enter>
+Enter file in which to save the key (/root/.ssh/.ssh/id_rsa): <Enter>
+/root/.ssh/id_rsa already exists.
+Overwrite (y/n)? y
 Enter passphrase (empty for no passphrase): <Press Enter>
 Enter same passphrase again: <Press Enter>
-Your identification has been saved in /Users/doh/.ssh/id_rsa.
-Your public key has been saved in /Users/doh/.ssh/id_rsa.pub.
+Your identification has been saved in /root/.ssh/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/.ssh/id_rsa.pub.
 The key fingerprint is:
 SHA256:1IF0KMMTVAMEQF62kTwcG59okGZLiMmi4Ae/BGBT+24 doh@fenago.com
 The key's randomart image is:
@@ -169,6 +171,8 @@ Number of key(s) added: 1
 Now try logging into the machine, with: "ssh 'frontend.example.com'"
 and check to make sure that only the key(s) you wanted were added.
 ```
+
+Note that `root` user password is **fenago**. Enter the password if you are prompted after running above command.
 
 With this complete, you should now be able to perform an Ansible
 ping command on the hosts you put in your inventory file. You will find
@@ -1288,93 +1292,14 @@ frontend2-emea.example.com | CHANGED => {
 }
 ```
 
-Note that the output from this command gives a unique job ID for each
-task on each host. Let\'s now say that we want to see how this task
-proceeds on the second frontend server. Simply issue the following
-command from your Ansible control machine:
-
-
-```
-ansible -i production-inventory frontend2-emea.example.com -m async_status -a "jid=651461662130.8858"
-frontend2-emea.example.com | SUCCESS => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python"
-    },
-    "ansible_job_id": "651461662130.8858",
-    "changed": false,
-    "finished": 0,
-    "started": 1
-}
-```
-
-Here, we can see that the job has started but not finished. If we now
-kill the [sleep] command that we issued and check on the status
-again, we can see the following:
-
-```
-ansible -i production-inventory frontend2-emea.example.com -m async_status -a "jid=651461662130.8858"
-frontend2-emea.example.com | FAILED! => {
-    "ansible_facts": {
-        "discovered_interpreter_python": "/usr/bin/python"
-    },
-    "ansible_job_id": "651461662130.8858",
-    "changed": true,
-    "cmd": [
-        "sleep",
-        "2h"
-    ],
-    "delta": "0:03:16.534212",
-    "end": "2020-04-05 19:18:08.431258",
-    "finished": 1,
-    "msg": "non-zero return code",
-    "rc": -15,
-    "start": "2020-04-05 19:14:51.897046",
-    "stderr": "",
-    "stderr_lines": [],
-    "stdout": "",
-    "stdout_lines": []
-}
-```
-
-Here, we see a [FAILED] status result because the [sleep]
-command was killed; it did not exit cleanly and returned a
-[-15] code (see the [rc] parameter). When it was killed, no
-output was sent to either [stdout] or [stderr], but if it
-had been, Ansible would have captured it and displayed it in the
-preceding code, which would aid you in debugging the failure. Lots of
-other useful information is included, including how long the task
-actually ran for, the end time, and so on. Similarly, the useful output
-is returned when the task exits cleanly.
-
-
 Defining variables
 ==================
-
 
 Let\'s get started with a practical look at defining variables in
 Ansible.
 
-Variables in Ansible should have well-formatted names that adhere to the
-following rules:
 
--   The name of the variable must only include letters, underscores,
-    and numbers---spaces are not allowed.
--   The name of the variable can only begin with a letter---they can
-    contain numbers, but cannot start with one.
-
-For example, the following are good variable names:
-
--   [external\_svc\_port]
--   [internal\_hostname\_ap1]
-
-The following examples are all invalid, however, and cannot be used:
-
--   [appserver-zone-na]
--   [cache server ip]
--   [dbms.server.port]
--   [01appserver]
-
-As discussed in the *Learning the YAML syntax* section, variables can be
+Variables can be
 defined in a dictionary structure, such as the following. All values are
 declared in key-value pairs:
 
@@ -1404,9 +1329,6 @@ public attributes, such as the following:
 
 -   [as\_integer\_ratio]
 -   [symmetric\_difference]
-
-You can find more information on this
-at <https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#creating-valid-variable-names>.
 
 This dictionary structure is valuable when defining host variables;
 although earlier in this lab we worked with a fictional set of

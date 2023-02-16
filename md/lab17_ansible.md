@@ -5,7 +5,7 @@ Lab 17. Consuming and Creating Modules
 ======================================
 
 
-Specifically, in this lab, you will cover the following topics:
+In this lab, you will cover the following topics:
 
 -   Executing multiple modules using the command line
 -   Reviewing the module index
@@ -614,6 +614,7 @@ Copy solution file as show below:
 ```
 cp ~/Desktop/gitlab-ci-ansible-course/Lab_17/remote_filecopy.py ~/ansible/moduledev
 cp ~/Desktop/gitlab-ci-ansible-course/Lab_17/args.json ~/ansible/moduledev
+touch /tmp/foo
 ```
 
 Now, you\'re finally ready to run your module for the first time. You
@@ -701,247 +702,6 @@ meaningful back to the user rather than using a traceback.
 
 
 
-Testing and documenting your module
------------------------------------
-
-
-Let\'s get started:
-
-1.  To run the sanity tests, assuming you have cloned the official
-    repository, change into this directory and set up your environment.
-    Note that if your standard Python binary isn\'t Python 3, the
-    [ansible-test] tool will not run, so you should ensure Python
-    3 is installed and, if necessary, set up a virtual environment to
-    ensure you are using Python 3. This can be done as follows:
-
-**Close all terminals and open new terminal**
-
-```
-cd ~/ansible
-python3 -m venv venv
-. venv/bin/activate
-
-(venv) $ source hacking/env-setup
-
-```
-
-
-
-3.  Now, provided you have copied your module code into the appropriate
-    location in the source tree (an example copy command is shown here),
-    you can run the sanity tests as follows:
-
-```
-(venv) $ cp ~/ansible/moduledev/better_remote_filecopy.py ./lib/ansible/modules/
-(venv) $ ansible-test sanity --requirements --test validate-modules better_remote_filecopy.py
-
-
-Running sanity test 'validate-modules' with Python 3.8
-```
-
-
-Now that we have passed the sanity checks with [ansible-test],
-let\'s see whether the documentation looks right by using the
-[ansible-doc] command. This is very easy to do. First of all, exit
-your virtual environment, if you are still in it, and change to the
-Ansible source code directory you cloned from GitHub earlier. Now, you
-can manually tell [ansible-doc] where to look for modules instead
-of the default path. This means that you could run the following:
-
-```
-cd ~/ansible
-ansible-doc -M moduledev/ remote_filecopy
-```
-
-You should be presented with the textual rendering of the documentation
-we created earlier -- an example of the first page is shown here to give
-you an idea of how it should look:
-
-```
-> REMOTE_FILECOPY (/root/ansible/moduledev/remote_filecopy.py)
-
-        The remote_copy module copies a file on the remote host from a
-        given source to a provided destination.
-
-  * This module is maintained by The Ansible Community
-OPTIONS (= is mandatory):
-
-= dest
-        Path to the destination on the remote host for the copy
-
-
-= source
-        Path to a file on the source file on the remote host
-```
-
-Excellent! So, we can already access our module documentation using
-[ansible-doc] and indeed confirm that it renders correctly in text
-mode. However, how do we go about building the HTML version?
-Fortunately, there is a well-defined process for this, which we shall
-outline here:
-
-1.  Under [lib/ansible/modules/], you will find a series of
-    categorized directories that modules are placed under -- ours fits
-    best under the [files] category, so copy it to this location
-    in preparation for the build process to come:
-
-```
-cp moduledev/remote_filecopy.py lib/ansible/modules/
-```
-
-2.  Change to the [docs/docsite/] directory as the next step in
-    the documentation creation process:
-
-```
-cd docs/docsite/
-```
-
-3.  Build a documentation-based Python file. Use the following command
-    to do so:
-
-```
-pip3 install -r requirements.txt 
-MODULES=hello_module make webdocs
-```
-
-
-
-With this in place, you will be able to successfully run [make webdocs] to build your documentation. You will see pages of
-output. A successful run should end with something like the output shown
-here:
-
-```
-...
-...
-copying images... [100%] dev_guide/style_guide/images/thenvsthan.jpg                                                                                                                          
-copying downloadable files... [100%] network/getting_started/sample_files/first_playbook_ext.yml                                                                                              
-copying static files... done
-copying extra files... done
-dumping search index in English (code: en) ... done
-dumping object inventory... done
-build succeeded, 205 warnings.
-
-The HTML pages are in _build/html.
-make[1]: Leaving directory '/root/ansible/docs/docsite'
-
-```
-
-Now, notice how, at the end of this process, the [make] command
-tells us where to look for the compiled documentation. If you look in
-here, you will find the following:
-
-```
-find /root/ansible/docs/docsite -name *remote_filecopy*
-
-/root/ansible/docs/docsite/rst/modules/better_remote_filecopy_module.rst
-/root/ansible/docs/docsite/_build/html/modules/better_remote_filecopy_module.html
-/root/ansible/docs/docsite/_build/doctrees/modules/better_remote_filecopy_module.doctree
-```
-
-**Note**: It will take quite some time to build complete documentation by running above command. Expected output:
-
-![](./images/doc1.png)
-
-![](./images/doc2.png)
-
-
-Try opening up the HTML file in your web browser -- you should see that
-the page renders just like one of the documentation pages from the
-official Ansible project documentation! This enables you to check that
-your documentation builds correctly and looks and reads well in the
-context that it will be viewed in.
-
-
-### Ansible module in a Playbook!
-
-Close all terminals and open new terminal. Complete solution: `~/Desktop/gitlab-ci-ansible-course/Lab_17/testplaybook`
-
-It is easy to run our Ansible module in a
-playbook! By default, Ansible will check the playbook directory for a
-subdirectory called [library/] and will run referenced modules
-from here. Hence, we might create the following:
-
-```
-cd ~
-mkdir testplaybook
-cd testplaybook
-mkdir library
-cp ~/ansible/moduledev/remote_filecopy.py library/
-```
-
-Now, create a simple inventory file in this playbook directory, just as
-we did previously, and add a playbook with the following contents:
-
-```
----
-- name: Playbook to test custom module
-  hosts: all
-
-  tasks:
-    - name: Test the custom module
-      remote_filecopy:
-        source: /tmp/foo
-        dest: /tmp/bar
-      register: testresult
-
-    - name: Print the test result data
-      debug:
-        var: testresult
-```
-
-For the purposes of clarity, your final directory structure should look
-like this:
-
-```
-testplaybook
-├── hosts
-├── library
-│   └── remote_filecopy.py
-└── testplaybook.yml
-```
-
-Now, try running the playbook in the usual manner and see what happens:
-
-```
-cd ~/Desktop/gitlab-ci-ansible-course/Lab_17/testplaybook
-ansible-playbook -i hosts testplaybook.yml
-
-
-PLAY [Playbook to test custom module] ******************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [frt01.example.com]
-ok: [app01.example.com]
-
-TASK [Test the custom module] **************************************************
-changed: [app01.example.com]
-changed: [frt01.example.com]
-
-TASK [Print the test result data] **********************************************
-ok: [app01.example.com] => {
-    "testresult": {
-        "changed": true,
-        "failed": false
-    }
-}
-ok: [frt01.example.com] => {
-    "testresult": {
-        "changed": true,
-        "failed": false
-    }
-}
-
-PLAY RECAP *********************************************************************
-app01.example.com : ok=3 changed=1 unreachable=0 failed=0 skipped=0 rescued=0 ignored=0
-frt01.example.com : ok=3 changed=1 unreachable=0 failed=0 skipped=0 rescued=0 ignored=0
-```
-
-Success! Not only have you tested your Python code locally, but you have
-also successfully run it on two remote servers in an Ansible playbook.
-That was really easy, which just proves how straightforward it is to get
-started expanding your Ansible modules to meet your own needs.
-
-
 
 Summary
 =======
@@ -956,9 +716,6 @@ then explored module data and its JSON format, before finally going on a
 journey through which we put together the code for a simple custom
 module. This provided you with a basis for creating your own modules in
 the future, if you so desire.
-
-In the next lab, we will explore the process of using and creating
-another core Ansible feature, known as plugins.
 
 
 Questions

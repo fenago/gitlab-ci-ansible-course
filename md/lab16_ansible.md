@@ -181,6 +181,7 @@ ansible-playbook update-apache-version.yml
 If we run this task a first time, we will see the following results:
 
 ```
+cd ~/Desktop/gitlab-ci-ansible-course/Lab_16
 ansible-playbook -i hosts handlers1.yml
 
 PLAY [Handler demo 1] **********************************************************
@@ -194,11 +195,6 @@ changed: [frt01.example.com]
 PLAY RECAP *********************************************************************
 frt01.example.com : ok=2 changed=2 unreachable=0 failed=0 skipped=0 rescued=0 ignored=0
 ```
-
-
-### ProTip
-
-Open http://localhost:81 in Mirdori browser to verify that apache is running now.
 
 
 Notice how the handler was run at the end, as the configuration file was
@@ -302,7 +298,7 @@ sudo service apache2 start
 sudo service apache2 status
 ```
 
-**Note:** Start will fail because port 80 is alredy in use by lab environment. make sure tha  `/etc/apache2/ports.conf` is updated; port `80` with port `81`.
+**Note:** Start will fail because port 80 is already in use by lab environment. make sure tha  `/etc/apache2/ports.conf` is updated; port `80` with port `81`.
 
 
 Now, for each of these commands, there is an equivalent ad hoc Ansible
