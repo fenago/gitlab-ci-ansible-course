@@ -212,8 +212,7 @@ script line by line:
     protecting from men-in-the-middle attack and is necessary to work,
     otherwise the job will fail.
 -   `chmod 644 ~/.ssh/known_hosts` --- assign correct permissions
--   For more information refer to GitLab docs
-    [here]
+
 
 `script` is where our actual
 code to execute is defined. We simply want to print hostname to job log
